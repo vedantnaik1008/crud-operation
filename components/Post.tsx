@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import CartPost from './CartPost';
+import Link from 'next/link';
 
 const Post = ({ data }: { data: any }) => {
     const router = useRouter();
@@ -53,6 +55,7 @@ const Post = ({ data }: { data: any }) => {
                             update
                         </button>
                         <button onClick={() => Delete(res.id)}>delete</button>
+                        <CartPost data={data}/>
                     </p>
                     {isUpdating && (<div>
                         <form
@@ -80,6 +83,7 @@ const Post = ({ data }: { data: any }) => {
                 </>
             ))}
             <button onClick={() => DeleteAll()}>Delete All</button>
+            <Link href={'/cart'}>Cart</Link>
         </div>
     );
 };
